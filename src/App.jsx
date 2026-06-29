@@ -114,7 +114,8 @@ const CHATS = [
 const LIVES = [
   { id: 6, user: "크리에이터J", title: "J × K 콜라보 라이브 🎬🎨", viewers: 83, coins: 156, tags: ["콜라보", "직캠", "일러스트"], emo: "🎬", c1: P.ylw, c2: P.pnk, reason: "구독 크리에이터 콜라보", boardId: 7, collab: { user: "크리에이터K", emo: "🎨", boardId: 9 } },
   { id: 7, user: "크리에이터K", title: "일러스트 타임랩스 라이브 🎨", viewers: 38, coins: 67, tags: ["크리에이터", "일러스트", "드로잉"], emo: "🎨", c1: P.pnk, c2: P.pur, reason: "구독 크리에이터 새틀릿", boardId: 9 },
-  { id: 1, user: "직관러_사직", title: "롯데 vs 삼성 사직 입중계", viewers: 314, coins: 127, tags: ["KBO", "롯데"], emo: "😆", c1: P.blu, c2: P.pnk, reason: "KBO 마인드맵 기반 추천", boardId: 1 },
+  { id: 8, user: "제주과일농장", title: "🍊 제주 한라봉 산지직송 라이브!", viewers: 89, coins: 42, tags: ["제주", "과일", "먹방"], emo: "🍊", c1: "#e67e22", c2: "#f39c12", reason: "마인드맵 추천 · 맛집", boardId: 1, product: { name: "제주 한라봉 5kg", price: "32,000", img: "🍊", seller: "제주과일농장", stock: 150 }, commerce: [{ name: "한라봉 5kg", price: "32,000", img: "🍊", stock: 150 }, { name: "천혜향 3kg", price: "28,000", img: "🍋", stock: 89 }, { name: "레드향 선물세트", price: "45,000", img: "🎁", stock: 34 }, { name: "감귤잼 수제", price: "15,000", img: "🫙", stock: 200 }] },
+  { id: 1, user: "직관러_사직", title: "롯데 vs 삼성 사직 입중계", viewers: 314, coins: 127, tags: ["KBO", "롯데"], emo: "😆", c1: P.blu, c2: P.pnk, reason: "KBO 마인드맵 기반 추천", boardId: 1, product: { name: "롯데 자이언츠 한정판 유니폼", price: "89,000", img: "👕", seller: "직관러_사직", stock: 23 } },
   { id: 2, user: "댄스커버_유나", title: "BTS 'Running Wild' 커버 댄스", viewers: 89, coins: 34, tags: ["BTS", "댄스"], emo: "💃", c1: P.pur, c2: P.pri, reason: "K-pop 관심사 기반 추천", boardId: 2 },
   { id: 3, user: "귀멸해설러", title: "귀멸의 칼날 4기 8화 리뷰", viewers: 234, coins: 78, tags: ["애니", "귀멸"], emo: "🔥", c1: P.red, c2: P.crl, reason: "애니 카테고리 매칭", boardId: 4 },
   { id: 4, user: "사직응원단장", title: "롯데 7회 응원 떼창 현장", viewers: 187, coins: 56, tags: ["KBO", "응원"], emo: "📣", c1: P.blu, c2: P.grn, reason: "롯데 팬덤 활동 기반", boardId: 1 },
@@ -184,7 +185,7 @@ function Home({ nav, setBoard }) {
             </div>
           )}
           <div style={{ display: "flex", gap: 4, marginBottom: 6 }}>{item.tags.map(function (tg) { return <span key={tg} style={{ fontSize: 9, padding: "2px 7px", borderRadius: 10, background: (tc[tg] || P.g4) + "15", color: tc[tg] || P.g4 }}>{tg}</span>; })}</div>
-          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, alignItems: "center" }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span></div>
+          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, alignItems: "center" }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer", padding: "1px 6px", borderRadius: 4, background: P.g1 }}>✈ 공유</span></div>
           <button onClick={function () { setRemindModal({ author: item.author, text: item.text, board: item.tags ? item.tags[0] : "" }); }} style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 6, padding: "6px 12px", borderRadius: 8, background: P.ylw + "15", border: "1px solid " + P.ylw + "44", cursor: "pointer", width: "100%" }}>
             <span style={{ fontSize: 14 }}>⭐</span><span style={{ fontSize: 10, fontWeight: 600, color: P.ylw }}>리마인드 · 마인드맵에 저장</span>
           </button>
@@ -204,7 +205,7 @@ function Home({ nav, setBoard }) {
           </div>
           <div style={{ fontSize: 13, fontWeight: 500, color: P.g7, marginBottom: 3 }}>{item.title}</div>
           {item.body && <div style={{ fontSize: 11, color: P.g5, lineHeight: 1.5, marginBottom: 4, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>{item.body}</div>}
-          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, alignItems: "center" }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span></div>
+          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, alignItems: "center" }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer", padding: "1px 6px", borderRadius: 4, background: P.g1 }}>✈ 공유</span></div>
           <button onClick={function () { setRemindModal({ author: item.author, text: item.title, board: item.board }); }} style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 6, padding: "6px 12px", borderRadius: 8, background: P.ylw + "15", border: "1px solid " + P.ylw + "44", cursor: "pointer", width: "100%" }}>
             <span style={{ fontSize: 14 }}>⭐</span><span style={{ fontSize: 10, fontWeight: 600, color: P.ylw }}>리마인드 · 마인드맵에 저장</span>
           </button>
@@ -226,7 +227,7 @@ function Home({ nav, setBoard }) {
             <span style={{ fontSize: 10, color: item.bc }}>{item.board}</span>
             <span style={{ fontSize: 9, color: P.g4, marginLeft: "auto" }}>{item.time}</span>
           </div>
-          <div style={{ display: "flex", gap: 14, fontSize: 11, color: P.g4 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span>↗ 공유</span></div>
+          <div style={{ display: "flex", gap: 14, fontSize: 11, color: P.g4 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer" }}>✈ 공유</span></div>
         </div>
       );
     }
@@ -247,7 +248,7 @@ function Home({ nav, setBoard }) {
             })}
             <div style={{ fontSize: 8, color: item.origBc, marginTop: 2 }}>원본 · {item.origBoard}</div>
           </div>
-          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, marginTop: 4 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span></div>
+          <div style={{ display: "flex", gap: 10, fontSize: 11, color: P.g4, marginTop: 4 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span style={{ cursor: "pointer" }}>😆😢🔥👏</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer", padding: "1px 6px", borderRadius: 4, background: P.g1 }}>✈ 공유</span></div>
         </div>
       );
     }
@@ -269,7 +270,7 @@ function Home({ nav, setBoard }) {
             </div>
             <div style={{ fontSize: 11, fontWeight: 500, color: P.g7 }}>{item.origText}</div>
           </div>
-          <div style={{ display: "flex", gap: 14, fontSize: 11, color: P.g4, marginTop: 6 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span>⭐ 리마인드</span></div>
+          <div style={{ display: "flex", gap: 14, fontSize: 11, color: P.g4, marginTop: 6 }}><span>▲ {item.likes}</span><span>💬 {item.cmt}</span><span>⭐ 리마인드</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer" }}>✈ 공유</span></div>
         </div>
       );
     }
@@ -550,7 +551,7 @@ function Home({ nav, setBoard }) {
             {writeFocus && (
               <div style={{ position: "relative" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
-                  <div style={{ display: "flex", gap: 8, fontSize: 16, color: P.pri }}><span style={{ cursor: "pointer" }}>🖼</span><span style={{ cursor: "pointer" }}>📊</span><span style={{ cursor: "pointer" }}>📍</span><span onClick={function () { setPlayModal("select"); }} style={{ cursor: "pointer" }}>🎮</span></div>
+                  <div style={{ display: "flex", gap: 8, fontSize: 16, color: P.pri }}><span style={{ cursor: "pointer" }}>🖼</span><span style={{ cursor: "pointer" }}>📊</span><span style={{ cursor: "pointer" }}>📍</span><span style={{ cursor: "pointer" }}>📷</span><span onClick={function () { setPlayModal("select"); }} style={{ cursor: "pointer" }}>🎮</span></div>
                   <button onClick={function () { if (writeText.trim()) setShowPostScope(true); }} style={{ marginLeft: "auto", padding: "5px 16px", borderRadius: 18, background: writeText.trim() ? P.pri : P.g3, color: "#fff", border: "none", fontSize: 11, fontWeight: 600, cursor: writeText.trim() ? "pointer" : "default" }}>던지기</button>
                 </div>
                 {showPostScope === true && (
@@ -757,7 +758,7 @@ function Home({ nav, setBoard }) {
         </div>
       )}
 
-      {/* Inline Remind Panel - shown below feed items */}
+            {/* Inline Remind Panel - shown below feed items */}
       {remindModal && (
         <div style={{ margin: "-8px 0 8px", padding: "10px 12px", borderRadius: "0 0 10px 10px", background: P.ylwL, border: "1px solid " + P.ylw + "33", borderTop: "none" }}>
           <div style={{ fontSize: 10, fontWeight: 600, color: P.g7, marginBottom: 6 }}>⭐ 이 생각을 내 마인드맵에 연결하기</div>
@@ -813,6 +814,7 @@ function BoardTab({ nav, setBoard, setCurBoard }) {
   const [tab, setTab] = useState("최근");
   const [sortBy, setSortBy] = useState("인기");
   const [votes, setVotes] = useState({});
+  const [downvotePost, setDownvotePost] = useState(null);
   const [pollVotes, setPollVotes] = useState({});
   const [catFilter, setCatFilter] = useState("전체");
   const [feedMode, setFeedMode] = useState("피드");
@@ -955,6 +957,23 @@ function BoardTab({ nav, setBoard, setCurBoard }) {
         </div>
       </div>
 
+      {/* 비추천 사유 작성 모달 */}
+      {downvotePost && (
+        <div style={{ position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, height: "100vh", background: "rgba(0,0,0,0.5)", zIndex: 30, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: "85%", background: "#fff", borderRadius: 14, padding: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 8 }}><span style={{ fontSize: 14 }}>👎</span><span style={{ fontSize: 14, fontWeight: 700, color: P.g7 }}>비추천 사유</span><span onClick={function () { setDownvotePost(null); }} style={{ marginLeft: "auto", fontSize: 14, color: P.g4, cursor: "pointer" }}>✕</span></div>
+            <div style={{ fontSize: 10, color: P.g4, marginBottom: 8 }}>비추천 시 반드시 사유를 작성해야 합니다</div>
+            <div style={{ display: "flex", gap: 3, flexWrap: "wrap", marginBottom: 8 }}>
+              {["스팸/광고", "허위사실", "혐오표현", "스포일러", "중복게시", "기타"].map(function (r) {
+                return <span key={r} style={{ padding: "4px 10px", borderRadius: 12, fontSize: 9, background: P.g1, color: P.g5, cursor: "pointer", border: "1px solid " + P.bdr }}>{r}</span>;
+              })}
+            </div>
+            <textarea placeholder="비추천 사유를 작성해주세요 (필수)" style={{ width: "100%", padding: "8px 10px", borderRadius: 8, border: "1px solid " + P.bdr, fontSize: 11, outline: "none", resize: "none", minHeight: 50, fontFamily: "inherit", boxSizing: "border-box", marginBottom: 8 }} />
+            <button onClick={function () { setVotes(function (p) { var n = Object.assign({}, p); n[downvotePost] = -1; return n; }); setDownvotePost(null); }} style={{ width: "100%", padding: "10px 0", borderRadius: 8, background: P.red, color: "#fff", border: "none", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>비추천 등록</button>
+          </div>
+        </div>
+      )}
+
       {feedMode === "내댓글" && (
         <div>
           {myComments.map(function (mc) {
@@ -1020,11 +1039,11 @@ function BoardTab({ nav, setBoard, setCurBoard }) {
                 </div>
               )}
               <div style={{ display: "flex", gap: 4, marginTop: 6, alignItems: "center" }}>
-                <button onClick={function () { handleVote(post.id, 1); }} style={{ padding: "3px 10px", borderRadius: 12, fontSize: 10, fontWeight: v === 1 ? 600 : 400, background: v === 1 ? P.grn + "22" : P.g1, color: v === 1 ? P.grn : P.g5, border: v === 1 ? "1px solid " + P.grn : "1px solid " + P.bdr, cursor: "pointer" }}>👍 찬성</button>
+                <button onClick={function () { handleVote(post.id, 1); }} style={{ padding: "3px 10px", borderRadius: 12, fontSize: 10, fontWeight: v === 1 ? 600 : 400, background: v === 1 ? P.grn + "22" : P.g1, color: v === 1 ? P.grn : P.g5, border: v === 1 ? "1px solid " + P.grn : "1px solid " + P.bdr, cursor: "pointer" }}>👍 추천</button>
                 <button onClick={function () { handleVote(post.id, 0); }} style={{ padding: "3px 10px", borderRadius: 12, fontSize: 10, fontWeight: v === 2 ? 600 : 400, background: v === 2 ? P.g4 + "22" : P.g1, color: P.g5, border: "1px solid " + P.bdr, cursor: "pointer" }}>😐 중립</button>
-                <button onClick={function () { handleVote(post.id, -1); }} style={{ padding: "3px 10px", borderRadius: 12, fontSize: 10, fontWeight: v === -1 ? 600 : 400, background: v === -1 ? P.red + "22" : P.g1, color: v === -1 ? P.red : P.g5, border: v === -1 ? "1px solid " + P.red : "1px solid " + P.bdr, cursor: "pointer" }}>👎 반대</button>
+                <button onClick={function () { handleVote(post.id, -1); }} style={{ padding: "3px 10px", borderRadius: 12, fontSize: 10, fontWeight: v === -1 ? 600 : 400, background: v === -1 ? P.red + "22" : P.g1, color: v === -1 ? P.red : P.g5, border: v === -1 ? "1px solid " + P.red : "1px solid " + P.bdr, cursor: "pointer" }}>👎 비추천</button>
                 <span style={{ fontSize: 11, fontWeight: 600, color: v === 1 ? P.grn : v === -1 ? P.red : P.g7, marginLeft: 4 }}>{score}</span>
-                <span style={{ fontSize: 10, color: P.g4, marginLeft: "auto" }}>💬 {post.cmt}</span>
+                <span style={{ fontSize: 10, color: P.g4, marginLeft: "auto" }}>💬 {post.cmt}</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer" }}>✈ 공유</span>
                 <span style={{ fontSize: 10, color: P.g4 }}>😆😢🔥👏</span>
               </div>
               <button style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 6, padding: "6px 12px", borderRadius: 8, background: P.ylw + "15", border: "1px solid " + P.ylw + "44", cursor: "pointer", width: "100%" }}>
@@ -1428,7 +1447,7 @@ function BoardDetail({ board, nav }) {
                   <span style={{ fontSize: 9, color: P.g4, marginLeft: "auto" }}>{p.time}</span>
                 </div>
                 <div style={{ fontSize: 12, fontWeight: 600, color: P.g7 }}>{p.title}</div>
-                <div style={{ display: "flex", gap: 8, marginTop: 3, fontSize: 10, color: P.g5 }}><span>▲ {p.likes}</span><span>💬 {p.cmt}</span></div>
+                <div style={{ display: "flex", gap: 8, marginTop: 3, fontSize: 10, color: P.g5 }}><span>▲ {p.likes}</span><span>💬 {p.cmt}</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer", padding: "1px 6px", borderRadius: 4, background: P.g1 }}>✈ 공유</span></div>
               </div>
             );
           })}
@@ -1455,9 +1474,13 @@ function BoardDetail({ board, nav }) {
           {p.body && <div style={{ fontSize: 10, color: P.g5, marginTop: 2, lineHeight: 1.5 }}>{p.body}</div>}
           <div style={{ display: "flex", gap: 8, marginTop: 4, fontSize: 10, color: P.g4, alignItems: "center" }}>
             <span>👍 {p.likes}</span>
+            <span style={{ color: P.g4 }}>중립</span>
+            <span>👎 비추천</span>
             <span>💬 {p.cmt}</span>
-            <span style={{ cursor: "pointer" }}>⭐ 리마인드</span>
-            <span style={{ marginLeft: "auto", color: P.blu, cursor: "pointer" }}>🌐</span>
+            <span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ marginLeft: "auto", cursor: "pointer", display: "flex", alignItems: "center", gap: 2, color: P.g5 }}>✈ 공유</span>
+          </div>
+          <div style={{ display: "flex", gap: 4, marginTop: 4, fontSize: 9, color: P.g4, alignItems: "center" }}>
+            <span style={{ cursor: "pointer", color: P.ylw }}>⭐ 리마인드 · 마인드맵에 저장</span>
           </div>
           {/* Comments with 3-level tree + roles */}
           {p.cmt > 0 && (
@@ -1533,7 +1556,7 @@ function BroadcastFeed({ nav, setBoard }) {
     <div style={{ position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, height: "100vh", zIndex: 30, background: "#000" }}>
       {/* Broadcast Header Tabs */}
       <div style={{ display: "flex", alignItems: "center", padding: "10px 14px 6px", background: "rgba(0,0,0,0.6)", position: "relative", zIndex: 10 }}>
-        {["공개", "친구", "팔로우"].map(function (t) {
+        {["🔭 탐험", "🔴 라이브", "♥ 팔로우"].map(function (t) {
           return <button key={t} onClick={function () { setBTab(t); }} style={{ padding: "4px 16px", fontSize: 13, fontWeight: bTab === t ? 700 : 400, color: bTab === t ? "#fff" : "rgba(255,255,255,0.5)", background: "none", border: "none", borderBottom: bTab === t ? "2px solid #fff" : "2px solid transparent", cursor: "pointer" }}>{t}</button>;
         })}
         <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
@@ -1548,8 +1571,98 @@ function BroadcastFeed({ nav, setBoard }) {
       </div>
       {/* Feed subtitle */}
       <div style={{ padding: "0 14px 4px", background: "rgba(0,0,0,0.4)" }}>
-        <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{bTab === "공개" ? "🧠 마인드맵 AI 추천 알고리즘" : bTab === "친구" ? "친구의 실시간 · 최근 캐스트" : "팔로우 중인 크리에이터"}</span>
+        <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{bTab === "🔭 탐험" ? "🧠 마인드맵 AI 추천 · 숏폼 + 라이브 삽입" : bTab === "🔴 라이브" ? "지금 진행 중인 라이브" : "팔로우 중인 크리에이터"}</span>
       </div>
+
+      {/* 탐험 탭: 업로드 영상 더미 + 라이브 삽입 */}
+      {bTab === "🔭 탐험" && (
+        <div style={{ position: "absolute", top: 80, left: 0, right: 0, bottom: 80, zIndex: 1, overflowY: "scroll", scrollSnapType: "y mandatory", msOverflowStyle: "none", scrollbarWidth: "none" }}>
+          <style>{"div::-webkit-scrollbar { display: none; }"}</style>
+          {[
+            { type: "upload", user: "사직의별", title: "나주환 슬라이더 분석 🔥", tags: ["KBO", "투수"], likes: 234, comments: 45, c1: "#1e3a5f", c2: "#2d5a8e",
+              timedChat: ["0:03 오늘 나주환 슬라이더 진짜 미쳤다", "0:08 회전수 체감된다 ㅋㅋ", "0:15 시즌 12호 가자!!!", "0:22 사직 관중 역대급"] },
+            { type: "commerce", user: "패션하울_지수", title: "🛍 여름 신상 코디 추천! 전부 2만원대", tags: ["패션", "코디"], likes: 1892, comments: 342, c1: "#3a2a1a", c2: "#6a4a3a",
+              timedChat: ["0:05 두번째 원피스 정보!", "0:12 가격 미쳤다", "0:18 장바구니 담았어요"],
+              products: [
+                { name: "린넨 오버핏 셔츠", price: "29,000", img: "👔", stock: 45 },
+                { name: "와이드 데님 팬츠", price: "35,000", img: "👖", stock: 23 },
+                { name: "크롭 카디건 세트", price: "22,000", img: "🧥", stock: 67 },
+                { name: "미니멀 크로스백", price: "18,000", img: "👜", stock: 12 },
+              ] },
+            { type: "upload", user: "귀멸_마스터", title: "무한성 편 작화 비교 — 원작 vs 애니", tags: ["애니", "작화"], likes: 189, comments: 32, c1: "#5f1e1e", c2: "#8e3a2d",
+              timedChat: ["0:04 이 장면 UFO테이블 실화냐", "0:11 원작도 갓이긴 함", "0:19 3기 기대된다"] },
+            { type: "live_insert", user: "크리에이터 J", title: "🔴 한정판 유니폼 언박싱 라이브!", tags: ["KBO", "굿즈"], viewers: 127, c1: "#8b0000", c2: "#cc3300", product: { name: "롯데 한정판 유니폼", price: "89,000", img: "👕" } },
+            { type: "upload", user: "ARMY_소울", title: "방탄 지민 솔로곡 댄스 프랙티스 💜", tags: ["BTS", "지민"], likes: 1204, comments: 456, c1: "#3a1a5a", c2: "#5a2a8a",
+              timedChat: ["0:03 지민이 미쳤다 진짜", "0:09 안무 너무 좋아 ㅠㅠ", "0:16 이걸 혼자 한다고?"] },
+          ].map(function (v, vi) {
+            var isLive = v.type === "live_insert";
+            var isCommerce = v.type === "commerce";
+            return (
+              <div key={vi} style={{ height: "calc(100vh - 160px)", minHeight: 500, background: "linear-gradient(180deg, " + v.c1 + ", " + v.c2 + ")", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 14px 10px", position: "relative", scrollSnapAlign: "start" }}>
+                <div style={{ position: "absolute", top: "35%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.15 }}>
+                  <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28 }}>▶</div>
+                </div>
+                {isLive && <div style={{ position: "absolute", top: 6, left: 10, display: "flex", gap: 4, alignItems: "center" }}><span style={{ padding: "3px 8px", borderRadius: 4, background: P.red, color: "#fff", fontSize: 9, fontWeight: 700 }}>🔴 LIVE</span><span style={{ fontSize: 10, color: "#fff" }}>👁 {v.viewers}명</span></div>}
+                {isLive && <div style={{ position: "absolute", top: 6, right: 10 }}><button onClick={function () { setBTab("🔴 라이브"); }} style={{ padding: "5px 12px", borderRadius: 8, background: P.red, color: "#fff", border: "none", fontSize: 9, fontWeight: 600, cursor: "pointer" }}>라이브로 이동 →</button></div>}
+                {isCommerce && !isLive && <div style={{ position: "absolute", top: 6, left: 10, padding: "2px 6px", borderRadius: 4, background: "rgba(0,0,0,0.5)" }}><span style={{ fontSize: 7, color: "rgba(255,255,255,0.4)" }}>광고입니다</span></div>}
+                <div style={{ position: "absolute", right: 10, bottom: isCommerce ? 220 : 120, display: "flex", flexDirection: "column", gap: 14, alignItems: "center" }}>
+                  <div style={{ textAlign: "center" }}><div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 16 }}>♥</div><div style={{ fontSize: 8, color: "#fff" }}>{v.likes || v.viewers}</div></div>
+                  <div style={{ textAlign: "center" }}><div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 16 }}>💬</div><div style={{ fontSize: 8, color: "#fff" }}>{v.comments || ""}</div></div>
+                  <div style={{ textAlign: "center" }}><div onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 16 }}>✈</div><div style={{ fontSize: 8, color: "#fff" }}>공유</div></div>
+                  <div style={{ textAlign: "center" }}><div style={{ width: 36, height: 36, borderRadius: "50%", background: P.ylw + "33", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 16 }}>⭐</div><div style={{ fontSize: 8, color: "#fff" }}>저장</div></div>
+                </div>
+                {isCommerce && v.products && (
+                  <div style={{ marginBottom: 8, marginRight: 50 }}>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#fff", marginBottom: 4 }}>🛍 판매 중인 상품 · 좌우로 밀어보세요</div>
+                    <div style={{ display: "flex", gap: 5, overflowX: "auto", paddingBottom: 4, msOverflowStyle: "none", scrollbarWidth: "none" }}>
+                      {v.products.map(function (pr) {
+                        return <div key={pr.name} style={{ minWidth: 95, background: "rgba(0,0,0,0.55)", borderRadius: 8, padding: "6px 8px", backdropFilter: "blur(4px)", flexShrink: 0 }}>
+                          <div style={{ fontSize: 22, textAlign: "center", marginBottom: 2 }}>{pr.img}</div>
+                          <div style={{ fontSize: 9, fontWeight: 600, color: "#fff", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{pr.name}</div>
+                          <div style={{ fontSize: 10, fontWeight: 700, color: P.ylw }}>₩{pr.price}</div>
+                          <div style={{ fontSize: 7, color: "rgba(255,255,255,0.4)", marginBottom: 3 }}>재고 {pr.stock}개</div>
+                          <div style={{ display: "flex", gap: 2 }}>
+                            <button style={{ flex: 1, padding: "3px 0", borderRadius: 4, background: P.ylw, color: "#fff", border: "none", fontSize: 7, fontWeight: 600, cursor: "pointer" }}>구매</button>
+                            <button style={{ flex: 1, padding: "3px 0", borderRadius: 4, background: "rgba(255,255,255,0.15)", color: "#fff", border: "none", fontSize: 7, cursor: "pointer" }}>🛒</button>
+                          </div>
+                        </div>;
+                      })}
+                    </div>
+                  </div>
+                )}
+                {isLive && v.product && (
+                  <div style={{ marginBottom: 6, marginRight: 50 }}>
+                    <div style={{ fontSize: 7, color: "rgba(255,255,255,0.4)" }}>광고입니다</div>
+                    <div onClick={function () { setBTab("🔴 라이브"); }} style={{ background: "rgba(0,0,0,0.5)", borderRadius: 8, padding: "6px 8px", cursor: "pointer", backdropFilter: "blur(4px)", display: "flex", gap: 6, alignItems: "center" }}>
+                      <span style={{ fontSize: 18 }}>{v.product.img}</span>
+                      <div style={{ flex: 1 }}><div style={{ fontSize: 10, fontWeight: 600, color: "#fff" }}>{v.product.name}</div><div style={{ fontSize: 10, fontWeight: 700, color: P.ylw }}>₩{v.product.price}</div></div>
+                      <button style={{ padding: "4px 8px", borderRadius: 6, background: P.ylw, color: "#fff", border: "none", fontSize: 8, fontWeight: 600, cursor: "pointer" }}>구매</button>
+                    </div>
+                  </div>
+                )}
+                {v.timedChat && (
+                  <div style={{ marginBottom: 4, marginRight: 50, height: 18, overflow: "hidden", position: "relative" }}>
+                    <style>{"@keyframes singleMsg" + vi + " { 0%{opacity:0;transform:translateY(10px)} 8%{opacity:1;transform:translateY(0)} 22%{opacity:1} 25%{opacity:0;transform:translateY(-10px)} 100%{opacity:0} }"}</style>
+                    {v.timedChat.map(function (ch, ci) {
+                      return <div key={ci} style={{ position: "absolute", left: 0, right: 0, padding: "2px 8px", borderRadius: 6, background: "rgba(0,0,0,0.4)", fontSize: 9, color: "#fff", opacity: 0, animation: "singleMsg" + vi + " " + (v.timedChat.length * 3) + "s " + (ci * 3) + "s infinite" }}>{ch}</div>;
+                    })}
+                  </div>
+                )}
+                <div style={{ marginRight: 50 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 2 }}>
+                    <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10 }}>😊</div>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#fff" }}>@{v.user}</span>
+                    {!isLive && <span style={{ fontSize: 8, padding: "2px 6px", borderRadius: 4, background: P.pri, color: "#fff", cursor: "pointer" }}>팔로우</span>}
+                  </div>
+                  <div style={{ fontSize: 11, color: "#fff", marginBottom: 3 }}>{v.title}</div>
+                  <div style={{ display: "flex", gap: 3 }}>{v.tags.map(function (t) { return <span key={t} style={{ fontSize: 8, padding: "2px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>#{t}</span>; })}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
 
       {/* Upload Flow Overlay */}
       {showUpload && (
@@ -1691,7 +1804,8 @@ function BroadcastFeed({ nav, setBoard }) {
           </div>
         </div>
       )}
-      <div onScroll={handleScroll} style={{ height: "calc(100vh - 56px - 72px)", overflowY: "scroll", scrollSnapType: "y mandatory" }}>
+      {bTab !== "🔭 탐험" && <div onScroll={handleScroll} style={{ height: "calc(100vh - 56px - 72px)", overflowY: "scroll", scrollSnapType: "y mandatory", msOverflowStyle: "none", scrollbarWidth: "none" }}>
+          <style>{"div::-webkit-scrollbar { display: none; }"}</style>
         {LIVES.map(function (l, i) {
           return (
             <div key={l.id} style={{ height: "calc(100vh - 56px - 72px)", scrollSnapAlign: "start", position: "relative", background: "linear-gradient(135deg, " + l.c1 + ", " + l.c2 + ")", display: "flex", flexDirection: "column" }}>
@@ -1730,8 +1844,41 @@ function BroadcastFeed({ nav, setBoard }) {
                 <div style={{ display: "flex", gap: 4, marginBottom: 4 }}>{l.tags.map(function (tg) { return <span key={tg} style={{ fontSize: 9, padding: "2px 7px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff" }}>#{tg}</span>; })}</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 9, color: "rgba(255,255,255,0.5)" }}><span style={{ width: 5, height: 5, borderRadius: 3, background: P.pri }} />{l.reason}</div>
               </div>
+              {/* 커머스 오버레이 — 상품 카드 */}
+              {l.product && (
+                <div style={{ position: "absolute", bottom: 290, left: 10, right: 60, zIndex: 2 }}>
+                  <div style={{ fontSize: 7, color: "rgba(255,255,255,0.4)", marginBottom: 2 }}>광고입니다</div>
+                  <div style={{ background: "rgba(0,0,0,0.6)", borderRadius: 10, padding: "6px 8px", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 6, background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>{l.product.img}</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 9, fontWeight: 600, color: "#fff", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.product.name}</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: P.ylw }}>₩{l.product.price}</div>
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 2, flexShrink: 0 }}>
+                        <button style={{ padding: "3px 6px", borderRadius: 4, background: P.ylw, color: "#fff", border: "none", fontSize: 7, fontWeight: 600, cursor: "pointer" }}>구매</button>
+                        <button style={{ padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)", border: "none", fontSize: 7, cursor: "pointer" }}>🛒</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {/* 커머스 상품 슬라이드 */}
+              {l.commerce && (
+                <div style={{ position: "absolute", bottom: 230, left: 10, right: 60, zIndex: 2 }}>
+                  <div style={{ display: "flex", gap: 4, overflowX: "auto", msOverflowStyle: "none", scrollbarWidth: "none" }}>
+                    {l.commerce.map(function (pr) {
+                      return <div key={pr.name} style={{ minWidth: 80, background: "rgba(0,0,0,0.5)", borderRadius: 6, padding: "4px 5px", backdropFilter: "blur(4px)", flexShrink: 0, textAlign: "center" }}>
+                        <div style={{ fontSize: 16 }}>{pr.img}</div>
+                        <div style={{ fontSize: 7, fontWeight: 600, color: "#fff", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{pr.name}</div>
+                        <div style={{ fontSize: 8, fontWeight: 700, color: P.ylw }}>₩{pr.price}</div>
+                      </div>;
+                    })}
+                  </div>
+                </div>
+              )}
               {/* 실시간 채팅 오버레이 */}
-              <div style={{ position: "absolute", bottom: 50, left: 10, right: 60, zIndex: 2, maxHeight: 120, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ position: "absolute", bottom: 50, left: 10, right: 60, zIndex: 2, maxHeight: 80, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <style>{"@keyframes chatFade { 0% { opacity: 0; transform: translateY(10px); } 10% { opacity: 1; transform: translateY(0); } 90% { opacity: 1; } 100% { opacity: 0.3; } }"}</style>
                 {[
                   { user: "사직의별", text: "전의리 오늘 폼 미쳤다 🔥", delay: 0 },
@@ -1795,7 +1942,7 @@ function BroadcastFeed({ nav, setBoard }) {
             </div>
           );
         })}
-      </div>
+      </div>}
       <div style={{ height: 56, background: "#111", display: "flex", borderTop: "1px solid #333" }}>
         {[{ id: "home", l: "홈", ic: "⌂" }, { id: "board", l: "플래닛", ic: "🪐" }, { id: "live", l: "캐스트", ic: "🛰", active: true }, { id: "msg", l: "시그널", ic: "📡" }, { id: "me", l: "프로필", ic: "●" }].map(function (n) {
           return (
@@ -2398,7 +2545,7 @@ function MindMap() {
             </div>
             <div style={{ display: "flex", gap: 3, marginBottom: 3 }}>{t.tags.map(function (tg) { return <span key={tg} style={{ fontSize: 8, padding: "1px 5px", borderRadius: 3, background: (tc[tg] || P.g4) + "22", color: tc[tg] || P.g4 }}>{tg}</span>; })}</div>
             <div style={{ fontSize: 11, color: P.g7, lineHeight: 1.5 }}>{t.text}</div>
-            <div style={{ display: "flex", gap: 10, fontSize: 9, color: P.g4, marginTop: 3 }}><span>♥ {t.likes}</span><span>↗ 공유</span>{t.src !== "mine" && <span style={{ color: P.pri }}>마인드맵 연결됨</span>}</div>
+            <div style={{ display: "flex", gap: 10, fontSize: 9, color: P.g4, marginTop: 3 }}><span>♥ {t.likes}</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer" }}>✈ 공유</span>{t.src !== "mine" && <span style={{ color: P.pri }}>마인드맵 연결됨</span>}</div>
           </div>
         );
       })}
@@ -2603,7 +2750,7 @@ function Profile() {
 
       {/* Tabs: Posts / Categories / Avatar */}
       <div style={{ display: "flex", gap: 0, borderBottom: "1px solid " + P.bdr, marginBottom: 10 }}>
-        {["글", "카테고리", "아바타", "🎮놀이"].map(function (t) { return <button key={t} onClick={function () { setTab(t); }} style={{ padding: "7px 14px", fontSize: 11, fontWeight: tab === t ? 600 : 400, color: tab === t ? P.pri : P.g4, background: "none", border: "none", borderBottom: tab === t ? "2px solid " + P.pri : "2px solid transparent", cursor: "pointer" }}>{t}</button>; })}
+        {["글", "카테고리", "아바타", "🎮놀이", "🛒주문"].map(function (t) { return <button key={t} onClick={function () { setTab(t); }} style={{ padding: "7px 10px", fontSize: 11, fontWeight: tab === t ? 600 : 400, color: tab === t ? P.pri : P.g4, background: "none", border: "none", borderBottom: tab === t ? "2px solid " + P.pri : "2px solid transparent", cursor: "pointer" }}>{t}</button>; })}
       </div>
 
       {/* Posts tab */}
@@ -2619,7 +2766,7 @@ function Profile() {
               </div>
               <div style={{ fontSize: 12, color: P.g7, lineHeight: 1.5, marginBottom: 3 }}>{p.text}</div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 10, color: P.g4 }}>
-                <span>▲ {p.likes}</span><span>💬 {p.cmt}</span><span>{p.time}</span>
+                <span>▲ {p.likes}</span><span>💬 {p.cmt}</span><span onClick={function () { window.__orbit_share && window.__orbit_share(); }} style={{ cursor: "pointer" }}>✈ 공유</span><span>{p.time}</span>
                 <span style={{ marginLeft: "auto", fontSize: 8, color: P.blu, cursor: "pointer" }}>🌐 번역보기</span>
               </div>
             </div>
@@ -2661,6 +2808,22 @@ function Profile() {
       {/* Avatar tab */}
       {tab === "아바타" && (
         <div>
+          <div onClick={function () { nav("avatar"); }} style={{ padding: 12, borderRadius: 10, background: "linear-gradient(135deg, " + P.pri + "15, " + P.pnk + "15)", border: "1px solid " + P.pri + "33", cursor: "pointer", marginBottom: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 50, height: 50, borderRadius: "50%", background: "linear-gradient(135deg, " + P.pri + ", " + P.pnk + ")", display: "flex", alignItems: "center", justifyContent: "center" }}><div style={{ width: 44, height: 44, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>😊</div></div>
+              <div style={{ flex: 1 }}><div style={{ fontSize: 12, fontWeight: 600, color: P.g7 }}>내 아바타 꾸미기</div><div style={{ fontSize: 9, color: P.g4 }}>2D SD · 3D · VR 아바타 편집</div></div>
+              <span style={{ fontSize: 14, color: P.pri }}>→</span>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
+            {[{ m: "2D SD", desc: "미니룸·프로필", icon: "😊" }, { m: "3D", desc: "캐스트·AR", icon: "🧍" }, { m: "VR", desc: "VR캐스트", icon: "🥽" }].map(function (a) {
+              return <div key={a.m} style={{ flex: 1, padding: "8px 4px", borderRadius: 8, background: P.g1, textAlign: "center" }}><div style={{ fontSize: 20, marginBottom: 2 }}>{a.icon}</div><div style={{ fontSize: 9, fontWeight: 600, color: P.g7 }}>{a.m}</div><div style={{ fontSize: 7, color: P.g4 }}>{a.desc}</div></div>;
+            })}
+          </div>
+        </div>
+      )}
+      {tab === "아바타_old" && (
+        <div>
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>{["AR필터", "2D", "3D"].map(function (m, i) { return <span key={m} style={{ fontSize: 10, padding: "4px 10px", borderRadius: 5, background: i === 0 ? P.pri : P.g1, color: i === 0 ? "#fff" : P.g5, cursor: "pointer" }}>{m}</span>; })}</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 4 }}>{["롯데유니폼", "응원봉", "갈매기", "기본"].map(function (it, i) { return <div key={i} style={{ background: P.g1, borderRadius: 6, padding: 5, textAlign: "center", border: i === 0 ? "2px solid " + P.pri : "1px solid " + P.bdr, cursor: "pointer" }}><div style={{ width: "100%", height: 28, borderRadius: 4, background: [P.bluL, P.ylwL, P.priL, P.g2][i], marginBottom: 2 }} /><div style={{ fontSize: 8, color: P.g6 }}>{it}</div></div>; })}</div>
           <div style={{ marginTop: 12, fontSize: 12, fontWeight: 600, color: P.g7, marginBottom: 5 }}>마인드맵 미니룸</div>
@@ -2694,6 +2857,37 @@ function Profile() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {tab === "🛒주문" && (
+        <div>
+          <div style={{ fontSize: 12, fontWeight: 600, color: P.g7, marginBottom: 8 }}>📦 주문/배송 현황</div>
+          {[
+            { product: "BTS 포토카드 컬렉션", seller: "댄스커버_유나", status: "배송 중", date: "6/28 도착 예정", step: 3, icon: "🃏" },
+            { product: "롯데 한정판 유니폼", seller: "크리에이터 J", status: "결제 완료", date: "6/30 발송 예정", step: 1, icon: "👕" },
+          ].map(function (o) {
+            return <div key={o.product} style={{ padding: 10, borderRadius: 10, border: "1px solid " + P.bdr, marginBottom: 6 }}>
+              <div style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 6, background: P.g1, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>{o.icon}</div>
+                <div style={{ flex: 1 }}><div style={{ fontSize: 11, fontWeight: 600, color: P.g7 }}>{o.product}</div><div style={{ fontSize: 8, color: P.g4 }}>{o.seller} · {o.date}</div></div>
+              </div>
+              <div style={{ display: "flex", gap: 2 }}>
+                {["결제", "준비", "발송", "배송", "완료"].map(function (s, i) {
+                  return <div key={s} style={{ flex: 1, height: 3, borderRadius: 2, background: i <= o.step ? P.pri : P.g2 }} />;
+                })}
+              </div>
+              <div style={{ fontSize: 8, color: P.pri, marginTop: 3 }}>{o.status}</div>
+            </div>;
+          })}
+          <div style={{ fontSize: 12, fontWeight: 600, color: P.g7, marginTop: 12, marginBottom: 6 }}>🛒 장바구니 (2개)</div>
+          <div onClick={function () { }} style={{ padding: "10px 0", textAlign: "center", borderRadius: 8, background: P.g1, fontSize: 11, color: P.pri, cursor: "pointer" }}>장바구니 보기 →</div>
+          <div style={{ fontSize: 12, fontWeight: 600, color: P.g7, marginTop: 12, marginBottom: 6 }}>👀 최근 본 상품</div>
+          <div style={{ display: "flex", gap: 6 }}>
+            {[{ name: "응원 키트", price: "35,000", icon: "📦" }, { name: "유니폼", price: "89,000", icon: "👕" }].map(function (r) {
+              return <div key={r.name} style={{ flex: 1, padding: 8, borderRadius: 8, background: P.g1, textAlign: "center", cursor: "pointer" }}><div style={{ fontSize: 18 }}>{r.icon}</div><div style={{ fontSize: 9, color: P.g7 }}>{r.name}</div><div style={{ fontSize: 9, fontWeight: 600, color: P.pri }}>₩{r.price}</div></div>;
+            })}
+          </div>
         </div>
       )}
 
@@ -2801,6 +2995,348 @@ function NewChatFlow({ nav }) {
 }
 
 // ========== ADD FRIEND ==========
+function AvatarCustom({ nav }) {
+  const [mode, setMode] = useState("2D");
+  const [cat, setCat] = useState("얼굴");
+  const [genMode, setGenMode] = useState(null);
+  var cats = ["얼굴", "머리", "상의", "하의", "신발", "악세", "메이크업", "배경"];
+  var items = {
+    "얼굴": [
+      { name: "둥근 눈", icon: "👁", price: "무료", type: "free" },
+      { name: "고양이 눈", icon: "🐱", price: "무료", type: "free" },
+      { name: "별 눈동자", icon: "⭐", price: "30Q", type: "qubit" },
+      { name: "하트 눈동자", icon: "💜", price: "40Q", type: "qubit" },
+      { name: "작은 코", icon: "👃", price: "무료", type: "free" },
+      { name: "높은 코", icon: "🔺", price: "무료", type: "free" },
+      { name: "두꺼운 입술", icon: "👄", price: "무료", type: "free" },
+      { name: "미소 입", icon: "😊", price: "20Q", type: "qubit" },
+    ],
+    "머리": [
+      { name: "숏컷", icon: "💇", price: "무료", type: "free" },
+      { name: "롱 웨이브", icon: "🌊", price: "무료", type: "free" },
+      { name: "포니테일", icon: "🎀", price: "25Q", type: "qubit" },
+      { name: "트윈테일", icon: "🎗", price: "30Q", type: "qubit" },
+      { name: "핑크 그라데", icon: "🩷", price: "50Q", type: "qubit" },
+      { name: "은발", icon: "🤍", price: "₩500", type: "cash" },
+      { name: "블루멜빵", icon: "💙", price: "₩300", type: "cash" },
+      { name: "벚꽃 머리핀", icon: "🌸", price: "40Q", type: "qubit", hot: true },
+    ],
+    "상의": [
+      { name: "기본 티셔츠", icon: "👕", price: "무료", type: "free" },
+      { name: "후드티", icon: "🧥", price: "무료", type: "free" },
+      { name: "야구 유니폼", icon: "⚾", price: "60Q", type: "qubit", hot: true },
+      { name: "한복 저고리", icon: "🎎", price: "80Q", type: "qubit" },
+      { name: "스트릿 자켓", icon: "🧥", price: "₩800", type: "cash" },
+      { name: "BTS 콜라보", icon: "💜", price: "₩1,200", type: "cash", hot: true },
+    ],
+    "하의": [
+      { name: "청바지", icon: "👖", price: "무료", type: "free" },
+      { name: "와이드팬츠", icon: "👖", price: "30Q", type: "qubit" },
+      { name: "미니스커트", icon: "🩳", price: "25Q", type: "qubit" },
+      { name: "카고팬츠", icon: "🦿", price: "40Q", type: "qubit" },
+    ],
+    "신발": [
+      { name: "스니커즈", icon: "👟", price: "무료", type: "free" },
+      { name: "하이탑", icon: "👢", price: "35Q", type: "qubit" },
+      { name: "슬리퍼", icon: "🩴", price: "무료", type: "free" },
+    ],
+    "악세": [
+      { name: "야구 모자", icon: "🧢", price: "무료", type: "free" },
+      { name: "선글라스", icon: "🕶", price: "20Q", type: "qubit" },
+      { name: "이어폰", icon: "🎧", price: "30Q", type: "qubit" },
+      { name: "날개", icon: "🪽", price: "100Q", type: "qubit", hot: true },
+      { name: "홈마스터 왕관", icon: "👑", price: "선거당선", type: "special" },
+      { name: "BV 다이아 뱃지", icon: "💎", price: "BV 1000+", type: "special" },
+    ],
+    "메이크업": [
+      { name: "자연 메이크업", icon: "🌿", price: "무료", type: "free" },
+      { name: "글리터", icon: "✨", price: "20Q", type: "qubit" },
+      { name: "고스 메이크업", icon: "🖤", price: "30Q", type: "qubit" },
+      { name: "고양이 페인트", icon: "🐱", price: "25Q", type: "qubit" },
+    ],
+    "배경": [
+      { name: "기본 방", icon: "🏠", price: "무료", type: "free" },
+      { name: "카페", icon: "☕", price: "50Q", type: "qubit" },
+      { name: "사직구장", icon: "⚾", price: "60Q", type: "qubit", hot: true },
+      { name: "우주", icon: "🌌", price: "80Q", type: "qubit" },
+      { name: "벚꽃길", icon: "🌸", price: "₩600", type: "cash" },
+      { name: "네온시티", icon: "🌃", price: "₩800", type: "cash" },
+    ],
+  };
+  var curItems = items[cat] || [];
+  return (
+    <div>
+      {/* 모드 전환 */}
+      <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + P.bdr }}>
+        {["2D", "3D", "VR"].map(function (m) {
+          return <button key={m} onClick={function () { setMode(m); }} style={{ flex: 1, padding: "8px 0", fontSize: 11, fontWeight: mode === m ? 600 : 400, background: mode === m ? P.pri : "#fff", color: mode === m ? "#fff" : P.g5, border: "none", cursor: "pointer" }}>{m === "2D" ? "2D SD" : m === "3D" ? "3D 캐스트" : "VR 풀바디"}</button>;
+        })}
+      </div>
+      {/* 미리보기 */}
+      <div style={{ height: 180, borderRadius: 12, background: "linear-gradient(180deg, " + P.pri + "15, " + P.pnk + "15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10, position: "relative" }}>
+        {mode === "2D" && (
+          <div style={{ textAlign: "center" }}>
+            <div style={{ width: 80, height: 80, borderRadius: "50%", background: "linear-gradient(135deg, " + P.pri + ", " + P.pnk + ")", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto", boxShadow: "0 4px 16px rgba(108,92,231,0.3)" }}>
+              <div style={{ width: 72, height: 72, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36 }}>😊</div>
+            </div>
+            <div style={{ fontSize: 10, color: P.g5, marginTop: 6 }}>직관러_사직 · Lv.34</div>
+            <div style={{ display: "flex", gap: 3, justifyContent: "center", marginTop: 4 }}>
+              <span style={{ fontSize: 7, padding: "1px 4px", borderRadius: 3, background: P.ylw + "22", color: P.ylw }}>⚾ 야구유니폼</span>
+              <span style={{ fontSize: 7, padding: "1px 4px", borderRadius: 3, background: P.blu + "22", color: P.blu }}>🧢 야구모자</span>
+            </div>
+          </div>
+        )}
+        {mode === "3D" && (
+          <div style={{ textAlign: "center" }}>
+            <div style={{ width: 70, height: 100, borderRadius: 12, background: "linear-gradient(180deg, #ffd4a8, #ffb87a)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin: "0 auto", position: "relative" }}>
+              <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#ffe4c4", marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>😊</div>
+              <div style={{ width: 50, height: 40, borderRadius: "8px 8px 0 0", background: P.blu, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff" }}>⚾ 유니폼</div>
+            </div>
+            <div style={{ fontSize: 9, color: P.g4, marginTop: 4 }}>3D 상반신 · 캐스트 전용</div>
+          </div>
+        )}
+        {mode === "VR" && (
+          <div style={{ textAlign: "center" }}>
+            <div style={{ width: 60, height: 130, position: "relative", margin: "0 auto" }}>
+              <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#ffe4c4", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>😊</div>
+              <div style={{ width: 44, height: 45, borderRadius: "6px", background: P.blu, margin: "2px auto 0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff" }}>⚾</div>
+              <div style={{ display: "flex", gap: 2, justifyContent: "center" }}>
+                <div style={{ width: 16, height: 40, borderRadius: 4, background: "#ffd4a8" }} />
+                <div style={{ width: 16, height: 40, borderRadius: 4, background: "#ffd4a8" }} />
+              </div>
+            </div>
+            <div style={{ fontSize: 9, color: P.g4, marginTop: 2 }}>VR 풀바디 · 핸드트래킹</div>
+          </div>
+        )}
+        <div style={{ position: "absolute", bottom: 6, display: "flex", gap: 6 }}>
+          <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 10, background: "rgba(0,0,0,0.06)", cursor: "pointer" }}>◀ 포즈</span>
+          <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 10, background: "rgba(0,0,0,0.06)", cursor: "pointer" }}>포즈 ▶</span>
+        </div>
+      </div>
+      {/* AI 생성 모드 */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 10 }}>
+        {[
+          { id: "ai", label: "📷 셀카 AI 생성", desc: "사진 → 아바타" },
+          { id: "mind", label: "🧠 마인드맵 추천", desc: "성향 → 스타일" },
+          { id: "manual", label: "✏ 직접 꾸미기", desc: "파츠별 선택" },
+        ].map(function (g) {
+          return <div key={g.id} onClick={function () { setGenMode(genMode === g.id ? null : g.id); }} style={{ flex: 1, padding: "6px 4px", borderRadius: 8, background: genMode === g.id ? P.pri + "15" : P.g1, border: genMode === g.id ? "1px solid " + P.pri + "44" : "1px solid transparent", textAlign: "center", cursor: "pointer" }}>
+            <div style={{ fontSize: 9, fontWeight: 600, color: genMode === g.id ? P.pri : P.g7 }}>{g.label}</div>
+            <div style={{ fontSize: 7, color: P.g4 }}>{g.desc}</div>
+          </div>;
+        })}
+      </div>
+      {/* AI 셀카 모드 */}
+      {genMode === "ai" && (
+        <div style={{ padding: 10, borderRadius: 8, background: P.g1, marginBottom: 10, textAlign: "center" }}>
+          <div style={{ width: 80, height: 80, borderRadius: "50%", border: "2px dashed " + P.pri, margin: "0 auto 6px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28 }}>📷</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: P.g7 }}>셀카를 촬영하거나 사진을 업로드하세요</div>
+          <div style={{ fontSize: 8, color: P.g4, marginTop: 2 }}>AI가 닮은 아바타를 자동 생성합니다</div>
+          <div style={{ marginTop: 6 }}>
+            <span style={{ fontSize: 8, color: P.g4 }}>닮은 정도: </span>
+            <span style={{ fontSize: 8, color: P.pri }}>실사 ◀━━━●━━━▶ 만화</span>
+          </div>
+        </div>
+      )}
+      {/* 마인드맵 추천 모드 */}
+      {genMode === "mind" && (
+        <div style={{ padding: 10, borderRadius: 8, background: P.priL, marginBottom: 10 }}>
+          <div style={{ fontSize: 10, fontWeight: 600, color: P.pri, marginBottom: 4 }}>🧠 마인드맵 기반 AI 추천</div>
+          <div style={{ fontSize: 9, color: P.g5 }}>당신의 마인드맵: KBO 42% · K-pop 28% · 애니 18% · 맛집 12%</div>
+          <div style={{ display: "flex", gap: 4, marginTop: 6 }}>
+            {["⚾ 야구팬 스타일", "💜 아이돌 스타일", "⚔ 애니 코스프레"].map(function (s) {
+              return <span key={s} style={{ padding: "4px 8px", borderRadius: 6, fontSize: 8, background: "#fff", color: P.pri, cursor: "pointer", border: "1px solid " + P.pri + "33" }}>{s}</span>;
+            })}
+          </div>
+        </div>
+      )}
+      {/* 카테고리 탭 */}
+      <div style={{ display: "flex", gap: 0, overflowX: "auto", marginBottom: 8, msOverflowStyle: "none", scrollbarWidth: "none" }}>
+        {cats.map(function (c) {
+          return <button key={c} onClick={function () { setCat(c); }} style={{ padding: "5px 10px", fontSize: 10, fontWeight: cat === c ? 600 : 400, color: cat === c ? P.pri : P.g4, background: "none", border: "none", borderBottom: cat === c ? "2px solid " + P.pri : "2px solid transparent", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}>{c}</button>;
+        })}
+      </div>
+      {/* 필터 */}
+      <div style={{ display: "flex", gap: 3, marginBottom: 6 }}>
+        {["전체", "무료", "큐빗", "캐시", "HOT"].map(function (f) {
+          return <span key={f} style={{ padding: "2px 8px", borderRadius: 8, fontSize: 8, background: f === "전체" ? P.pri : f === "HOT" ? P.red + "15" : P.g1, color: f === "전체" ? "#fff" : f === "HOT" ? P.red : P.g5, cursor: "pointer" }}>{f}</span>;
+        })}
+      </div>
+      {/* 아이템 그리드 */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 4 }}>
+        {curItems.map(function (it) {
+          return <div key={it.name} style={{ padding: 6, borderRadius: 8, border: "1px solid " + P.bdr, textAlign: "center", cursor: "pointer", position: "relative", background: it.type === "special" ? P.ylw + "08" : "#fff" }}>
+            {it.hot && <span style={{ position: "absolute", top: 2, right: 2, fontSize: 6, padding: "0 3px", borderRadius: 3, background: P.red, color: "#fff" }}>HOT</span>}
+            <div style={{ fontSize: 22, marginBottom: 2 }}>{it.icon}</div>
+            <div style={{ fontSize: 7, fontWeight: 500, color: P.g7, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{it.name}</div>
+            <div style={{ fontSize: 7, color: it.type === "free" ? P.grn : it.type === "qubit" ? P.pri : it.type === "cash" ? P.ylw : P.g4, fontWeight: 600 }}>{it.price}</div>
+          </div>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ShopScreen({ nav }) {
+  const [shopTab, setShopTab] = useState("아이템");
+  const [giftMode, setGiftMode] = useState(false);
+  var items = [
+    { id: 1, name: "오로라 배경", price: "80Q", cashPrice: "1,000", cat: "캐스트", icon: "🎨", hot: true },
+    { id: 2, name: "네온 폰트팩", price: "40Q", cashPrice: "500", cat: "폰트", icon: "🔤", hot: false },
+    { id: 3, name: "롯데 이모티콘", price: "60Q", cashPrice: "800", cat: "이모티콘", icon: "😀", hot: true },
+    { id: 4, name: "AR 고양이 필터", price: "200Q", cashPrice: "2,500", cat: "AR필터", icon: "📸", hot: false },
+    { id: 5, name: "VR 우주 공간", price: "500Q", cashPrice: "6,000", cat: "VR", icon: "🥽", hot: false },
+    { id: 6, name: "벚꽃 마인드맵", price: "50Q", cashPrice: "600", cat: "마인드맵", icon: "🖼", hot: true },
+  ];
+  var gifts = [
+    { id: 10, name: "스타벅스 아메리카노", price: "4,500", icon: "☕", cat: "카페" },
+    { id: 11, name: "BBQ 황금올리브", price: "18,000", icon: "🍗", cat: "치킨" },
+    { id: 12, name: "CGV 영화 관람권", price: "12,000", icon: "🎬", cat: "문화" },
+    { id: 13, name: "배달의민족 1만원", price: "10,000", icon: "🛵", cat: "배달" },
+    { id: 14, name: "편의점 5천원", price: "5,000", icon: "🏪", cat: "편의점" },
+    { id: 15, name: "네이버페이 1만원", price: "10,000", icon: "💚", cat: "페이" },
+  ];
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 0, borderBottom: "1px solid " + P.bdr, marginBottom: 8 }}>
+        {["아이템", "캐시숍", "커머스"].map(function (t) {
+          return <button key={t} onClick={function () { setShopTab(t); }} style={{ padding: "8px 0", fontSize: 12, fontWeight: shopTab === t ? 600 : 400, color: shopTab === t ? P.pri : P.g4, background: "none", border: "none", borderBottom: shopTab === t ? "2px solid " + P.pri : "none", cursor: "pointer", flex: 1 }}>{t}</button>;
+        })}
+      </div>
+      {shopTab === "아이템" && (
+        <div>
+          <div style={{ fontSize: 10, color: P.g4, marginBottom: 6 }}>큐빗 또는 캐시로 구매 · 482Q 보유</div>
+          <div style={{ display: "flex", gap: 3, marginBottom: 8, overflowX: "auto" }}>
+            {["전체", "캐스트", "폰트", "이모티콘", "AR필터", "VR", "마인드맵"].map(function (c) {
+              return <span key={c} style={{ padding: "4px 10px", borderRadius: 12, fontSize: 9, background: c === "전체" ? P.pri : P.g1, color: c === "전체" ? "#fff" : P.g5, whiteSpace: "nowrap", cursor: "pointer", flexShrink: 0 }}>{c}</span>;
+            })}
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 6 }}>
+            {items.map(function (it) {
+              return <div key={it.id} style={{ padding: 10, borderRadius: 10, border: "1px solid " + P.bdr, cursor: "pointer" }}>
+                <div style={{ fontSize: 28, textAlign: "center", marginBottom: 4 }}>{it.icon}</div>
+                {it.hot && <span style={{ position: "relative", top: -30, left: 0, fontSize: 7, padding: "1px 4px", borderRadius: 3, background: P.red, color: "#fff" }}>HOT</span>}
+                <div style={{ fontSize: 11, fontWeight: 600, color: P.g7 }}>{it.name}</div>
+                <div style={{ fontSize: 8, color: P.g4 }}>{it.cat}</div>
+                <div style={{ display: "flex", gap: 4, marginTop: 4 }}>
+                  <span style={{ fontSize: 9, fontWeight: 600, color: P.pri }}>{it.price}</span>
+                  <span style={{ fontSize: 8, color: P.g4 }}>₩{it.cashPrice}</span>
+                </div>
+              </div>;
+            })}
+          </div>
+        </div>
+      )}
+      {shopTab === "캐시숍" && (
+        <div>
+          <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
+            <span style={{ fontSize: 10, color: P.g4 }}>캐시 잔액: ₩24,500</span>
+            <button onClick={function () { setGiftMode(!giftMode); }} style={{ marginLeft: "auto", padding: "4px 10px", borderRadius: 6, background: giftMode ? P.pnk : P.g1, color: giftMode ? "#fff" : P.g5, border: "none", fontSize: 9, cursor: "pointer" }}>{giftMode ? "🎁 선물모드 ON" : "🎁 선물하기"}</button>
+          </div>
+          <div style={{ display: "flex", gap: 3, marginBottom: 8 }}>
+            {["전체", "카페", "치킨", "문화", "배달", "편의점", "페이"].map(function (c) {
+              return <span key={c} style={{ padding: "4px 8px", borderRadius: 10, fontSize: 9, background: c === "전체" ? P.ylw : P.g1, color: c === "전체" ? "#fff" : P.g5, cursor: "pointer", whiteSpace: "nowrap" }}>{c}</span>;
+            })}
+          </div>
+          {gifts.map(function (g) {
+            return <div key={g.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 6px", borderBottom: "1px solid " + P.g1, cursor: "pointer" }}>
+              <div style={{ width: 40, height: 40, borderRadius: 8, background: P.ylwL, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>{g.icon}</div>
+              <div style={{ flex: 1 }}><div style={{ fontSize: 11, fontWeight: 600, color: P.g7 }}>{g.name}</div><div style={{ fontSize: 8, color: P.g4 }}>{g.cat}</div></div>
+              <div style={{ textAlign: "right" }}><div style={{ fontSize: 11, fontWeight: 600, color: P.ylw }}>₩{g.price}</div>
+              {giftMode ? <span style={{ fontSize: 7, color: P.pnk }}>🎁 선물</span> : <span style={{ fontSize: 7, color: P.pri }}>구매</span>}</div>
+            </div>;
+          })}
+          <div style={{ marginTop: 10, padding: 8, borderRadius: 8, background: P.g1, fontSize: 9, color: P.g4 }}>최근 본 상품과 유사한 추천이 여기에 표시됩니다</div>
+        </div>
+      )}
+      {shopTab === "커머스" && (
+        <div>
+          <div style={{ fontSize: 10, color: P.g4, marginBottom: 8 }}>캐스터가 판매하는 상품</div>
+          {[
+            { seller: "크리에이터 J", product: "롯데 한정판 유니폼", price: "89,000", img: "👕", viewers: 127, live: true },
+            { seller: "사직의별", product: "직관 응원 키트 세트", price: "35,000", img: "📦", viewers: 0, live: false },
+            { seller: "댄스커버_유나", product: "BTS 포토카드 컬렉션", price: "25,000", img: "🃏", viewers: 89, live: true },
+          ].map(function (p) {
+            return <div key={p.product} style={{ padding: 10, borderRadius: 10, border: "1px solid " + P.bdr, marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                <span style={{ fontSize: 9, fontWeight: 600, color: P.g7 }}>{p.seller}</span>
+                {p.live && <span style={{ fontSize: 7, padding: "1px 4px", borderRadius: 3, background: P.red, color: "#fff" }}>🔴 LIVE · {p.viewers}명</span>}
+              </div>
+              <div style={{ display: "flex", gap: 8 }}>
+                <div style={{ width: 60, height: 60, borderRadius: 8, background: P.g1, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28 }}>{p.img}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: P.g7 }}>{p.product}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: P.pri, marginTop: 2 }}>₩{p.price}</div>
+                  <div style={{ display: "flex", gap: 4, marginTop: 4 }}>
+                    <button style={{ padding: "4px 10px", borderRadius: 6, background: P.pri, color: "#fff", border: "none", fontSize: 8, fontWeight: 600, cursor: "pointer" }}>바로 주문</button>
+                    <button style={{ padding: "4px 10px", borderRadius: 6, background: P.g1, color: P.g5, border: "none", fontSize: 8, cursor: "pointer" }}>🛒 장바구니</button>
+                    {p.live && <button style={{ padding: "4px 10px", borderRadius: 6, background: P.redL, color: P.red, border: "none", fontSize: 8, cursor: "pointer" }}>🔴 라이브</button>}
+                  </div>
+                </div>
+              </div>
+            </div>;
+          })}
+          <div style={{ fontSize: 9, fontWeight: 600, color: P.g7, marginTop: 8, marginBottom: 4 }}>📺 이 상품이 소개된 영상</div>
+          <div style={{ display: "flex", gap: 6, overflowX: "auto" }}>
+            {["직관 유니폼 리뷰", "응원 키트 언박싱", "포토카드 하울"].map(function (v) {
+              return <div key={v} style={{ minWidth: 100, height: 60, borderRadius: 8, background: "linear-gradient(135deg, " + P.pri + "22, " + P.pnk + "22)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: P.g7, cursor: "pointer", flexShrink: 0 }}>📹 {v}</div>;
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CartScreen({ nav }) {
+  var cartItems = [
+    { name: "롯데 한정판 유니폼", seller: "크리에이터 J", price: 89000, qty: 1, img: "👕" },
+    { name: "직관 응원 키트 세트", seller: "사직의별", price: 35000, qty: 2, img: "📦" },
+  ];
+  var total = cartItems.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+  return (
+    <div>
+      <div style={{ fontSize: 10, color: P.g4, marginBottom: 8 }}>장바구니 {cartItems.length}개 상품</div>
+      {cartItems.map(function (it) {
+        return <div key={it.name} style={{ display: "flex", gap: 8, padding: "10px 0", borderBottom: "1px solid " + P.g1 }}>
+          <div style={{ width: 50, height: 50, borderRadius: 8, background: P.g1, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>{it.img}</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: P.g7 }}>{it.name}</div>
+            <div style={{ fontSize: 8, color: P.g4 }}>{it.seller}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 3 }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: P.pri }}>₩{it.price.toLocaleString()}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 4, background: P.g1, borderRadius: 6, padding: "2px 6px" }}>
+                <span style={{ fontSize: 10, cursor: "pointer" }}>−</span>
+                <span style={{ fontSize: 10, fontWeight: 600 }}>{it.qty}</span>
+                <span style={{ fontSize: 10, cursor: "pointer" }}>+</span>
+              </div>
+            </div>
+          </div>
+          <span style={{ fontSize: 12, color: P.g4, cursor: "pointer" }}>✕</span>
+        </div>;
+      })}
+      <div style={{ padding: "12px 0", borderTop: "2px solid " + P.g7, marginTop: 8, display: "flex", alignItems: "center" }}>
+        <span style={{ fontSize: 11, color: P.g5 }}>총 결제금액</span>
+        <span style={{ marginLeft: "auto", fontSize: 18, fontWeight: 700, color: P.g7 }}>₩{total.toLocaleString()}</span>
+      </div>
+      <div style={{ display: "flex", gap: 6 }}>
+        <button style={{ flex: 1, padding: "12px 0", borderRadius: 10, background: P.ylw, color: "#fff", border: "none", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>💰 캐시 결제 (₩24,500)</button>
+        <button style={{ flex: 1, padding: "12px 0", borderRadius: 10, background: P.pri, color: "#fff", border: "none", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>💳 카드 결제</button>
+      </div>
+      <div style={{ marginTop: 12 }}>
+        <div style={{ fontSize: 10, fontWeight: 600, color: P.g7, marginBottom: 4 }}>📦 배송 현황</div>
+        {[{ product: "BTS 포토카드 컬렉션", status: "배송 중", date: "6/27 도착 예정", color: P.blu }].map(function (d) {
+          return <div key={d.product} style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 8px", borderRadius: 6, background: P.g1 }}>
+            <span style={{ fontSize: 12 }}>🚚</span>
+            <div style={{ flex: 1 }}><div style={{ fontSize: 10, fontWeight: 500, color: P.g7 }}>{d.product}</div><div style={{ fontSize: 8, color: d.color }}>{d.status} · {d.date}</div></div>
+          </div>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+
 function AddFriend({ nav }) {
   const [searchVal, setSearchVal] = useState("");
   const [found, setFound] = useState(null);
@@ -2900,7 +3436,7 @@ function PlanetWrite({ nav, board }) {
         ) : (
           <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 8, background: P.ylw + "15", border: "1px solid " + P.ylw + "44" }}>
             <Av n="직관" s={24} c={P.blu} />
-            <div><div style={{ fontSize: 12, fontWeight: 600, color: P.g7 }}>직관러_사직</div><div style={{ fontSize: 8, color: P.pri }}>Lv.34 · 공개</div></div>
+            <div><div style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ fontSize: 12, fontWeight: 600, color: P.g7 }}>직관러_사직</span><span style={{ fontSize: 7, padding: "1px 6px", borderRadius: 4, background: P.g1, color: P.g4, cursor: "pointer" }}>✏ 편집</span></div><div style={{ fontSize: 8, color: P.pri }}>Lv.34 · 공개</div></div>
           </div>
         )}
         <button onClick={function () { setMode(null); }} style={{ marginLeft: "auto", fontSize: 10, color: P.g4, background: "none", border: "none", cursor: "pointer" }}>← 모드 변경</button>
@@ -3023,6 +3559,10 @@ function CreateCommunity({ nav }) {
         <span style={{ fontSize: 28 }}>⭐</span>
         <div style={{ fontSize: 16, fontWeight: 700, color: P.ylw, marginTop: 4 }}>캐스터 새틀릿 만들기</div>
         <div style={{ fontSize: 11, color: P.g5, marginTop: 4 }}>내가 매니저로 영구 운영하는 새틀릿</div>
+        <div style={{ marginTop: 8, padding: 8, borderRadius: 8, background: P.grnL, border: "1px solid " + P.grn + "33" }}>
+          <div style={{ fontSize: 10, fontWeight: 600, color: P.grn }}>🤝 새틀릿 클럽 → 플래닛 승격</div>
+          <div style={{ fontSize: 8, color: P.g4, lineHeight: 1.5 }}>3개+ 새틀릿 연합 시 클럽 결성 가능<br/>합산 구독자 5,000+ · BV 500+ · 90일 활동 시 공식 플래닛 승격</div>
+        </div>
       </div>
       <div style={{ fontSize: 12, fontWeight: 600, color: P.g7, marginBottom: 6 }}>생성 조건</div>
       {conditions.map(function (c) {
@@ -3227,6 +3767,11 @@ export default function App() {
 
   const [showNotif, setShowNotif] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [toast, setToast] = useState(null);
+  const [shareOpen, setShareOpen] = useState(false);
+  function showShare() { setShareOpen(true); setTimeout(function () { setShareOpen(false); }, 4000); }
+  function copyLink() { setShareOpen(false); setToast("📋 링크가 복사되었습니다"); setTimeout(function () { setToast(null); }, 2000); }
+  if (typeof window !== "undefined") window.__orbit_share = showShare;
   const [settingsTab, setSettingsTab] = useState("알림");
 
   var notifItems = [
@@ -3242,6 +3787,7 @@ export default function App() {
   function goBack() {
     if (scr === "chat" || scr === "pubchat" || scr === "newchat" || scr === "addfriend") setScr("msg");
     else if (scr === "boardDetail" || scr === "createcom" || scr === "planetwrite" || scr === "search") setScr("board");
+    else if (scr === "shop" || scr === "cart" || scr === "avatar") setScr("me");
     else setScr("home");
   }
 
@@ -3265,6 +3811,9 @@ export default function App() {
           {scr === "addfriend" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>친구 추가</span>}
           {scr === "createcom" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>새틀릿 만들기</span>}
           {scr === "search" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>검색</span>}
+          {scr === "shop" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>🛒 숍</span>}
+          {scr === "avatar" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>아바타 꾸미기</span>}
+          {scr === "cart" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>🛒 장바구니</span>}
           {scr === "planetwrite" && <span style={{ fontSize: 13, fontWeight: 600, color: P.g7 }}>{board.name} 글쓰기</span>}
           <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 5 }}>
             {scr === "board" && <input onClick={function () { navTo("search"); }} placeholder="🔍 검색..." readOnly style={{ cursor: "pointer", padding: "5px 10px", borderRadius: 7, border: "1px solid " + P.bdr, fontSize: 10, outline: "none", width: 90, background: P.g1, boxSizing: "border-box" }} />}
@@ -3532,6 +4081,59 @@ export default function App() {
           </div>
         </div>
       )}
+      {/* 공유 패널 — 인스타그램 스타일 */}
+      {shareOpen && (
+        <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, background: "rgba(0,0,0,0.5)", height: "100vh", zIndex: 40 }} onClick={function () { setShareOpen(false); }}>
+          <div onClick={function (e) { e.stopPropagation(); }} style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "#fff", borderRadius: "16px 16px 0 0", padding: "12px 14px 24px", maxHeight: "70vh", overflowY: "auto" }}>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: 10 }}>
+              <span onClick={function () { setShareOpen(false); }} style={{ fontSize: 16, cursor: "pointer", color: P.g4 }}>✕</span>
+              <span style={{ flex: 1, textAlign: "center", fontSize: 14, fontWeight: 600, color: P.g7 }}>공유</span>
+              <span style={{ width: 16 }} />
+            </div>
+            <input placeholder="🔍 검색" style={{ width: "100%", padding: "8px 12px", borderRadius: 8, border: "1px solid " + P.bdr, fontSize: 12, outline: "none", boxSizing: "border-box", marginBottom: 12 }} />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 14 }}>
+              {[
+                { name: "직관러_사직", avatar: "😊" },
+                { name: "사직의별", avatar: "⭐" },
+                { name: "크리에이터 J", avatar: "🎬" },
+                { name: "부산갈매기", avatar: "🐦" },
+                { name: "댄스커버_유나", avatar: "💃" },
+                { name: "귀멸_마스터", avatar: "⚔" },
+                { name: "야구매니아", avatar: "⚾" },
+                { name: "롯데사랑", avatar: "💙" },
+              ].map(function (u) {
+                return <div key={u.name} onClick={function () { setShareOpen(false); setToast(u.name + "에게 공유했습니다"); setTimeout(function () { setToast(null); }, 2000); }} style={{ textAlign: "center", cursor: "pointer" }}>
+                  <div style={{ width: 44, height: 44, borderRadius: "50%", background: P.g1, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, margin: "0 auto 3px" }}>{u.avatar}</div>
+                  <div style={{ fontSize: 8, color: P.g5, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{u.name}</div>
+                </div>;
+              })}
+            </div>
+            <div style={{ borderTop: "1px solid " + P.bdr, paddingTop: 10, display: "flex", gap: 0, overflowX: "auto" }}>
+              {[
+                { name: "링크 복사", icon: "🔗", action: "link" },
+                { name: "카카오톡", icon: "💬", action: "kakao" },
+                { name: "Facebook", icon: "📘", action: "fb" },
+                { name: "WhatsApp", icon: "📱", action: "wa" },
+                { name: "Email", icon: "✉", action: "email" },
+                { name: "Threads", icon: "🧵", action: "threads" },
+                { name: "X", icon: "𝕏", action: "x" },
+                { name: "시그널", icon: "📡", action: "signal" },
+              ].map(function (s) {
+                return <div key={s.name} onClick={function () { if (s.action === "link") { copyLink(); } else { setShareOpen(false); setToast(s.name + "(으)로 공유했습니다"); setTimeout(function () { setToast(null); }, 2000); } }} style={{ textAlign: "center", cursor: "pointer", minWidth: 52, flexShrink: 0 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", background: P.g1, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, margin: "0 auto 3px" }}>{s.icon}</div>
+                  <div style={{ fontSize: 7, color: P.g5 }}>{s.name}</div>
+                </div>;
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 토스트 */}
+      {toast && (
+        <div style={{ position: "fixed", bottom: 80, left: "50%", transform: "translateX(-50%)", padding: "8px 20px", borderRadius: 20, background: "#333", color: "#fff", fontSize: 11, zIndex: 50, boxShadow: "0 4px 12px rgba(0,0,0,0.2)", whiteSpace: "nowrap" }}>{toast}</div>
+      )}
+
       {scr !== "onboarding" && <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, background: "#fff", borderTop: "1px solid " + P.bdr, display: "flex", zIndex: 20 }}>
         {[{ id: "home", l: "홈", ic: "⌂" }, { id: "board", l: "플래닛", ic: "planet" }, { id: "live", l: "캐스트", ic: "🛰" }, { id: "msg", l: "시그널", ic: "signal", badge: 58 }, { id: "me", l: "프로필", ic: "●" }].map(function (n) {
           var isActive = (scr === n.id) || (n.id === "board" && (scr === "boardDetail" || scr === "createcom" || scr === "planetwrite")) || (n.id === "msg" && (scr === "chat" || scr === "pubchat" || scr === "newchat" || scr === "addfriend"));
